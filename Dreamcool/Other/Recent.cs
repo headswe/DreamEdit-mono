@@ -20,6 +20,7 @@ namespace DreamEdit
             {
                 File.CreateText("recent.cfg");
             }
+			
             StreamReader reader = new StreamReader("recent.cfg");
             for (int x = 0; x < 5; x++)
             {

@@ -1,0 +1,11 @@
+/home/head/DreamEdit/Dreamcool/obj/x86/Debug/DreamEdit.Form1.resources
+/home/head/DreamEdit/Dreamcool/obj/x86/Debug/DreamEdit.FRdialog.resources
+/home/head/DreamEdit/Dreamcool/obj/x86/Debug/DreamEdit.mainWindow.resources
+/home/head/DreamEdit/Dreamcool/obj/x86/Debug/DreamEdit.objTree.resources
+/home/head/DreamEdit/Dreamcool/obj/x86/Debug/DreamEdit.FRtab.resources
+/home/head/DreamEdit/Dreamcool/obj/x86/Debug/DreamEdit.Mediaplayer.resources
+/home/head/DreamEdit/Dreamcool/obj/x86/Debug/DreamEdit.string_dialog.resources
+/home/head/DreamEdit/Dreamcool/obj/x86/Debug/DreamEdit.Properties.Resources.resources
+/home/head/DreamEdit/Dreamcool/obj/x86/Debug/DreamEdit.textEditor.resources
+/home/head/DreamEdit/Dreamcool/obj/x86/Debug/DreamEdit.Console.resources
+/home/head/DreamEdit/Dreamcool/obj/x86/Debug/DreamEdit.DMI.dmiViewer.resources

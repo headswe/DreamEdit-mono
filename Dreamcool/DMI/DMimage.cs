@@ -11,11 +11,13 @@ namespace DreamEdit.DMI
     {
         public DMimage(String Filename)
         {
+			#if !MONO
             DMIParser parser = new DMIParser();
             parser.parse(new FileStream(Filename, FileMode.Open, FileAccess.Read));
             states = parser.states;
             width = parser.width;
             height = parser.height;
+			#endif
         }
         public Dictionary<String, ImageState> getStates()
         {

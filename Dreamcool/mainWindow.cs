@@ -40,14 +40,21 @@ namespace DreamEdit
 
         }
         ImageList image_list = new ImageList();
+#if !MONO
         string dme_string = File.ReadAllText("res\\default.dme");
         string dm_string = File.ReadAllText("res\\default.dm");
+#elif MONO
+        string dme_string = File.ReadAllText("res//default.dme");
+        string dm_string = File.ReadAllText("res//default.dm");
+#endif
         public mainWindow()
         {
             InitializeComponent();
             info = new Info(this);
             tabControl1.DrawMode = TabDrawMode.OwnerDrawFixed;
-            image_list.ColorDepth = ColorDepth.Depth32Bit;
+			image_list.ColorDepth = ColorDepth.Depth32Bit;
+			#if !MONO
+
             image_list.Images.Add(BlackFox.Win32.Icons.IconFromExtension("Directory", BlackFox.Win32.Icons.SystemIconSize.Small));
             image_list.Images.Add(BlackFox.Win32.Icons.IconFromExtension(".dm", BlackFox.Win32.Icons.SystemIconSize.Small));
             image_list.Images.Add(BlackFox.Win32.Icons.IconFromExtension(".dmf", BlackFox.Win32.Icons.SystemIconSize.Small));
@@ -55,6 +62,15 @@ namespace DreamEdit
             image_list.Images.Add(BlackFox.Win32.Icons.IconFromExtension(".dmi", BlackFox.Win32.Icons.SystemIconSize.Small));
             image_list.Images.Add(BlackFox.Win32.Icons.IconFromExtension(".dms", BlackFox.Win32.Icons.SystemIconSize.Small));
             image_list.Images.Add(BlackFox.Win32.Icons.IconFromExtension(".dmm", BlackFox.Win32.Icons.SystemIconSize.Small));
+			#elif MONO
+			image_list.Images.Add(Image.FromFile("gui//speaker.ico"));
+			image_list.Images.Add(Image.FromFile("gui//speaker.ico"));
+			image_list.Images.Add(Image.FromFile("gui//speaker.ico"));
+			image_list.Images.Add(Image.FromFile("gui//speaker.ico"));
+			image_list.Images.Add(Image.FromFile("gui//speaker.ico"));
+			image_list.Images.Add(Image.FromFile("gui//speaker.ico"));
+			image_list.Images.Add(Image.FromFile("gui//speaker.ico"));
+			#endif
             file_list.ImageList = image_list;
             Recent.recent_list = Recent.getRecent();
             foreach (string path in Recent.recent_list)
@@ -243,9 +259,9 @@ namespace DreamEdit
                     return;
                 }
             }
-            fileInfo F = info.files[info.dirs + "\\" + name];
+            fileInfo F = info.files[info.dirs + Config.path_seperator + name];
             if (F == null)
-                throw new NullReferenceException("Could not find file " + info.dirs + "\\" + name);
+                throw new NullReferenceException("Could not find file " + info.dirs + Config.path_seperator + name);
             TabPage P = new TabPage(F.FileName + F.Extension);
             P.Controls.Add(new textEditor(this, console,P));
             P.Controls[0].Controls["editor"].Text = F.Text;
@@ -324,13 +340,13 @@ namespace DreamEdit
                 }
             }
             
-            if (!info.files.ContainsKey(info.dir + "\\" + name))
-                throw new NullReferenceException("Could not find file " + info.dir + "\\" + name);
-            fileInfo F = info.files[info.dir + "\\" + name];
+            if (!info.files.ContainsKey(info.dir + Config.path_seperator + name))
+                throw new NullReferenceException("Could not find file " + info.dir + Config.path_seperator + name);
+            fileInfo F = info.files[info.dir + Config.path_seperator + name];
             if (F.Extension != ".dm")
                 return;
             if (F == null)
-                throw new NullReferenceException("Could not find file " + info.dir + "\\" + name);
+                throw new NullReferenceException("Could not find file " + info.dir + Config.path_seperator + name);
             TabPage P = new TabPage(F.FileName + F.Extension);
             P.Controls.Add(new textEditor(this, console,P));
             P.Controls[0].Controls["editor"].Text = F.Text;
@@ -587,11 +603,11 @@ namespace DreamEdit
         {
             TreeNode tree = (TreeNode)file_list_menu.Tag;
             string path = tree.FullPath;
-            path = path.Replace('/', '\\');
-            if (path.IndexOf('\\') != -1)
+            path = path.Replace("/", Config.path_seperator);
+            if (path.IndexOf(Config.path_seperator) != -1)
             {
-                path = path.Substring(path.IndexOf('\\'));
-                path = info.dir + path + "\\" + name;
+                path = path.Substring(path.IndexOf(Config.path_seperator));
+                path = info.dir + path + Config.path_seperator + name;
             }
             else
                 path = info.dir + name;
@@ -599,7 +615,7 @@ namespace DreamEdit
                 return null;
             StreamWriter B = File.CreateText(path);
             B.Close();
-            fileInfo fInfo = new fileInfo(path, tree.FullPath.Replace('/', '\\').Substring(tree.FullPath.IndexOf('/')));
+            fileInfo fInfo = new fileInfo(path, tree.FullPath.Replace("/", Config.path_seperator).Substring(tree.FullPath.IndexOf('/')));
             if (info.dme_Loaded)
             {
                 info.files.Add(path, fInfo);
@@ -611,11 +627,11 @@ namespace DreamEdit
         {
             TreeNode tree = (TreeNode)file_list_menu.Tag;
             string path = p;
-            path = path.Replace('/', '\\');
-            if (path.IndexOf('\\') != -1)
+            path = path.Replace("/", Config.path_seperator);
+            if (path.IndexOf(Config.path_seperator) != -1)
             {
-                path = path.Substring(path.IndexOf('\\'));
-                path = info.dir + path + "\\" + name;
+                path = path.Substring(path.IndexOf(Config.path_seperator));
+                path = info.dir + path + Config.path_seperator + name;
             }
             else
                 path = info.dir + name;
@@ -646,11 +662,11 @@ namespace DreamEdit
             }
             TreeNode tree = (TreeNode)file_list_menu.Tag;
             string path = tree.FullPath;
-            path = path.Replace('/', '\\');
-            if (path.IndexOf('\\') != -1)
+            path = path.Replace("/", Config.path_seperator);
+            if (path.IndexOf(Config.path_seperator) != -1)
             {
-                path = path.Substring(path.IndexOf('\\'));
-                path = info.dir + path + "\\" + name;
+                path = path.Substring(path.IndexOf(Config.path_seperator));
+                path = info.dir + path + Config.path_seperator + name;
             }
             else
                 path = info.dir + name;
@@ -658,7 +674,7 @@ namespace DreamEdit
                 return;
             StreamWriter B = File.CreateText(path);
             B.Close();
-            info.files.Add(path, new fileInfo(path, tree.FullPath.Replace('/', '\\').Substring(tree.FullPath.IndexOf('/'))));
+            info.files.Add(path, new fileInfo(path, tree.FullPath.Replace("/", Config.path_seperator).Substring(tree.FullPath.IndexOf('/'))));
             TreeNode node = new TreeNode(name);
             node.Tag = info.files[path];
             node.ImageIndex = 1;
@@ -708,7 +724,7 @@ namespace DreamEdit
             if (path.IndexOf('\\') != -1)
             {
                 path = path.Substring(path.IndexOf('\\'));
-                path = info.dir + path + "\\" + name;
+                path = info.dir + path + Config.path_seperator + name;
             }
             else
                 path = info.dir + name;
@@ -750,13 +766,13 @@ namespace DreamEdit
 
             fileInfo f = addFile(path, name + ".dm");
             fileInfo fdme = addFile(path, name + ".dme");
-            StreamWriter P = new StreamWriter(path+"\\"+name+"\\" + name + ".dme");
+            StreamWriter P = new StreamWriter(path+Config.path_seperator+name+Config.path_seperator + name + ".dme");
             P.Write(dme_string);
             P.Close();
-            P = new StreamWriter(path + "\\" + name + "\\" + name + ".dm");
+            P = new StreamWriter(path + Config.path_seperator + name + Config.path_seperator + name + ".dm");
             P.Write(dm_string);
             P.Close();
-            File.AppendAllText(path + "\\" + name + "\\" + name + ".dme", "\n #include \"" + name + ".dm\"\n // END_INCLUDE");
+            File.AppendAllText(path + Config.path_seperator + name + Config.path_seperator + name + ".dme", "\n #include \"" + name + ".dm\"\n // END_INCLUDE");
         }
 
 
@@ -869,8 +885,7 @@ namespace DreamEdit
 
         private void tempToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form1 F = new Form1();
-            F.Show();
+
         }
     }
 }

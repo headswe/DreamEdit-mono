@@ -64,7 +64,9 @@
             this.console = new DreamEdit.Console();
             this.panel1.SuspendLayout();
             this.menu.SuspendLayout();
+#if !MONO
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+#endif
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -379,7 +381,9 @@
             this.menu.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
+#if !MONO
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+#endif
             this.splitContainer1.ResumeLayout(false);
             this.tab_menu.ResumeLayout(false);
             this.file_list_menu.ResumeLayout(false);

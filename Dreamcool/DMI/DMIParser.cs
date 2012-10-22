@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if !MONO
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -193,3 +194,4 @@ namespace DreamEdit.DMI
         }
     }
 }
+#endif

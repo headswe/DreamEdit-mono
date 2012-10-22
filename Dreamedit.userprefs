@@ -1,0 +1,38 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Dreamcool/Program.cs">
+    <Files>
+      <File FileName="Dreamcool/Form1.cs" Line="25" Column="10" />
+      <File FileName="Dreamcool/DMI/DMIParser.cs" Line="197" Column="7" />
+      <File FileName="Dreamcool/Form1.Designer.cs" Line="14" Column="33" />
+      <File FileName="Dreamcool/DMI/DMimage.cs" Line="14" Column="4" />
+      <File FileName="Dreamcool/mainWindow.cs" Line="677" Column="34" />
+      <File FileName="Dreamcool/Parser.cs" Line="1" Column="1" />
+      <File FileName="Dreamcool/mainWindow.Designer.cs" Line="386" Column="7" />
+      <File FileName="Dreamcool/Other/Recent.cs" Line="24" Column="64" />
+      <File FileName="Dreamcool/Program.cs" Line="19" Column="2" />
+      <File FileName="Dreamcool/Info.cs" Line="210" Column="69" />
+      <File FileName="Dreamcool/Config.cs" Line="10" Column="40" />
+      <File FileName="Dreamcool/fileInfo.cs" Line="14" Column="78" />
+      <File FileName="Dreamcool/Console.cs" Line="45" Column="60" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="Dreamedit" expanded="True">
+            <Node name="DMI" expanded="True" />
+            <Node name="Other" expanded="True" />
+            <Node name="mainWindow.cs" expanded="True" />
+            <Node name="Program.cs" selected="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/home/head/DreamEdit/Dreamcool/Other/Recent.cs" line="21" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

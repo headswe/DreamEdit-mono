@@ -11,7 +11,7 @@ namespace DreamEdit
         public String DirPath;
         public String Extension;
         public String InternalPath;
-        public String FullPath { get { return DirPath + "\\" + FileName + Extension; } }
+        public String FullPath { get { return DirPath + Config.path_seperator + FileName + Extension; } }
         public String Text;
         public bool Checked = false;
         public fileInfo(string FileName, string Path, string Extension)

@@ -18,8 +18,8 @@ namespace DreamEdit
         }
         public void AppendLink(string str, string hyper)
         {
-            hyper = hyper.Replace("\\", "/");
-            str = str.Replace("\\", "/");
+            hyper = hyper.Replace(Config.path_seperator, "/");
+            str = str.Replace(Config.path_seperator, "/");
             console_textbox.InsertLink(str, hyper);
             console_textbox.AppendText("\n");
         }
@@ -40,9 +40,9 @@ namespace DreamEdit
                 }
                 else
                     S = "STRING TOO LONG";
-                S = S.Replace("\\", "/");
+                S = S.Replace(Config.path_seperator, "/");
                 string hyper = line[0] + ":" + line[1];
-                hyper = hyper.Replace("\\","/");
+                hyper = hyper.Replace(Config.path_seperator,"/");
                 console_textbox.InsertLink(S, hyper);
                 console_textbox.AppendText("\n");
                 error_count++;

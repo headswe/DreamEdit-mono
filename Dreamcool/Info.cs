@@ -78,7 +78,7 @@ namespace DreamEdit
                         }
                     }
                     line = line.Substring(1,line.Length-2);
-                    files[dir + "\\" + line] = new fileInfo(dir + '\\' + line,line);
+                    files[dir + Config.path_seperator + line] = new fileInfo(dir + '\\' + line,line);
                     System.Console.WriteLine(dir+'\\'+line);
                 }
                 else if (lines.Length - 1 >= 1 && lines[1] == "FILE_DIR")
@@ -207,8 +207,8 @@ namespace DreamEdit
                 if (!files.ContainsKey(f.FullName))
                 {
                     string paths = Path.GetDirectoryName(f.FullName);
-                    paths =  paths.Substring(paths.IndexOf(this.dir+"\\")+this.dir.Length+1);
-                    files[f.FullName] = new fileInfo(f.FullName,paths+"\\"+f.Name,false);
+                    paths =  paths.Substring(paths.IndexOf(this.dir+Config.path_seperator)+this.dir.Length+1);
+                    files[f.FullName] = new fileInfo(f.FullName,paths+Config.path_seperator+f.Name,false);
                     FI = files[f.FullName];
                 }
                 else
